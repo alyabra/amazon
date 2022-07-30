@@ -60,12 +60,83 @@ nav div ul li {
     height: 100%;
     padding: 5px;
 }
-
-.header-container {
-    background: gray;
+.headerLsit-container {
+    position: relative;
     width: 100vw;
+    display: flex;
     height: 30vh;
 }
+.dots-header-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px;
+    
+}
+.headerList {
+    width: 90%;
+    height: 100%;
+    /* position: relative; */
+    display: flex;
+    /* flex-wrap: nowrap; */
+    overflow-x: scroll;
+    /* overflow: hidden; */
+    /* overflow-y: hidden; */
+    scroll-snap-type: x mandatory;
+}
+.scroll-bottom-container {
+    position: relative;
+    width: 5%;
+    background: palegoldenrod;
+    height: 100%;
+}
+.buttonNext {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background: red;
+    border-radius: 50%;
+}
+.buttonPreview {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background: red;
+    border-radius: 50%;
+}
+.header-container {
+    display: block;
+    /* background: gray; */
+    width: 100%;
+    margin: 0 10px;
+    height: 100%;
+    scroll-snap-align: center;
+    display: flex;
+}
+.header-container--left {
+    width: 750px;
+    height: 100%;
+}
+.header-container--right {
+    width: 50%;
+    height: 100%;
+    /* background: palegoldenrod; */
+}
+
+.input-radio {
+    margin:0 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    box-shadow: #0f161e;
+}
+
 .downdrop-gendres {
     background: rgb(230, 223, 223);
     width: 100vw;

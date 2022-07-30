@@ -83,22 +83,91 @@ async function getMovieGenres() {
 
 async function getMovieDetails(id) {
     // const baseURL = 'https://image.tmdb.org/t/p/w300/'
-    const movieImg = document.createElement('img');
-    const container = document.getElementById('header-container');
+    const containerList = document.getElementById('headerList');
+
+    //"header-container
+    const headerConter = document.createElement('div');
+    headerConter.className = "header-container";
+
+    // const container = document.getElementById('header-container--right');
+    const container = document.createElement('div');
+    container.className = 'header-container--right'
+
+    // const containerLeft = document.getElementById('header-container--left');
+    const containerLeft = document.createElement('div');
+    containerLeft.className = 'header-container--left';
+
+    const movieImg = document.createElement('img');    
+    const title = document.createElement('h2');
+    const overview = document.createElement('p');
+    const ul = document.createElement('ul');
+
     // const img = document.createElementById('img')
     // data = `${baseURL}movie/${id}/${API_KEY}`
     const response = await fetch(`${baseURL}movie/${id}?${API_KEY}`);
     const data = await response.json();
     console.log(data, data.backdrop_path)
     movieImg.src = `https://image.tmdb.org/t/p/w300/${data.backdrop_path}`;
+    title.innerHTML = data.title;
+    overview.innerHTML = data.overview;
+
+    //lista de generos
+    const arrayGenres = data.genres;
+    // for (let i=0; i<7; i++) {
+    //     const divRadio = document.createElement('div');
+    //     divRadio.className = 'input-radio';
+    //     containerDots.appendChild(divRadio);
+    // }
+
+     arrayGenres.forEach(item => {
+         const li = document.createElement('li');
+         li.innerHTML = item.name;
+         ul.appendChild(li);
+     });
+
+    containerLeft.appendChild(title);
+    containerLeft.appendChild(overview);
+    containerLeft.appendChild(ul);
     container.appendChild(movieImg);
+
+    headerConter.appendChild(containerLeft);
+    headerConter.appendChild(container);
+    containerList.appendChild(headerConter);
+
+
     // container.style.backgroundImage = `url(https://image.tmdb.org/t/p/w300/${data.backdrop_path})`;
     console.log(`url(https://image.tmdb.org/t/p/w300/${data.backdrop_path})`)
     // container.style.backgroundSize = '40%';
     // container.style.backgroundRepeat = 'no-repeat';
     // movieImg.src = 'https://image.tmdb.org/t/p/w300/'+ movie.backdrop_path;
     // poster_path
-}   
- getMovieDetails(338953);
+}
+
+// https://api.themoviedb.org/3/trending/movie/week?api_key=27be4d179de34afb05223f9d58a82fcd
+
+async function createHeaderList() {
+     const response = await fetch(`${baseURL}trending/movie/day?${API_KEY}`);
+     const data = await response.json();
+     const arrayMovies = data.results;
+
+     const containerDots = document.getElementById('dots-header-container')
+
+    
+    for (let i=0; i<7; i++) {
+        const divRadio = document.createElement('div');
+        divRadio.className = 'input-radio';
+        containerDots.appendChild(divRadio);
+        console.log(arrayMovies[i]);
+        getMovieDetails(arrayMovies[i].id);
+    }
+
+
+}
+createHeaderList()
+
+// getMovieDetails(338953);
+// getMovieDetails(338953);
+// getMovieDetails(338953)
+// getMovieDetails(338953)
 
 //  getMovieGenres();

@@ -19,3 +19,14 @@ function navigaitor(){
 }
 
 
+//slider con botones
+const preview = document.getElementById('buttonPreview');
+const next = document.getElementById('buttonNext');
+const slider = document.getElementById('headerList');
+
+preview.addEventListener('click', () => {
+    slider.scrollLeft -= 600;
+});
+next.addEventListener('click', () => {
+    slider.scrollLeft += 600
+});
