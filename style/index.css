@@ -217,6 +217,7 @@ nav div ul li {
     /* margin-left: 10px; */
 }
 .movie-img {
+    min-width: 270px;
     border-radius: 5px;
 }
 .hidden {

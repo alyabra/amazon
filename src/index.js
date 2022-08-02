@@ -1,6 +1,20 @@
 const API_KEY = 'api_key=27be4d179de34afb05223f9d58a82fcd';
 const baseURL = 'https://api.themoviedb.org/3/';
 
+
+//lazyLoader
+
+const lazyLoader = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if(entry.isIntersecting) {
+            const url = entry.target.getAttribute('src-data');
+            // const url = movieImg.getAttribute('data-img',)
+            entry.target.setAttribute('src', url);
+            console.log('hola')
+        }
+    });
+}); 
+
 const mainHome = document.getElementById('main-home');
 
 
@@ -16,7 +30,7 @@ function createCategoryMovieList(container, moviesArray, categoryNameList) {
     categoriaContainer.appendChild(categoryTitle);
 
     moviesArray.forEach(movie => {
-
+      
         // console.log(movie);
         const movieContainer = document.createElement('div');
         const movieImg = document.createElement('img');
@@ -25,9 +39,12 @@ function createCategoryMovieList(container, moviesArray, categoryNameList) {
         
         movieContainer.className = 'movie-container';
         movieImg.className = 'movie-img';
-        movieImg.src = 'https://image.tmdb.org/t/p/w300/'+ movie.poster_path;
-    
+        movieImg.setAttribute('src-data', 'https://image.tmdb.org/t/p/w300/'+ movie.poster_path);
+
+        lazyLoader.observe(movieImg);
         
+        //movieImg.src = 'https://image.tmdb.org/t/p/w300/'+ movie.poster_path;
+
         
         movieContainer.appendChild(movieImg);
         categoryContainerList.appendChild(movieContainer);
@@ -78,7 +95,7 @@ async function getMovieGenres() {
         // containerNameGendrer.insertBefore(li, anotherCategories );
         containerNameGendrer.appendChild(li);
 
-        //  fetchData(url_genres, item.name);
+        fetchData(url_genres, item.name);
 
     });
 }
