@@ -9,6 +9,7 @@
  --nav-color: #1a222e;
  --body-color: #0f161e;
  --boton-color: hsla(0,0%,100%,.3);
+ --amazon-blue: #009de1;
 }
 body {
     background: var(--body-color);
@@ -137,8 +138,58 @@ nav div ul li {
 } */
 #downdrop-gendres {
     display: inline-grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
+    width: 66%;
+}
+#anotherCategories {
+    width: 34%;
+    height: 100%;
+}
+#categorias-prinpales-container {
+    /* margin: 5px 30px;
+    padding: 0px 20px; */
+    height: 100%;
+    display: grid;
+    grid-template-areas: "head head head"
+                         "cat1  cat2 cat3"
+                         "cat4  cat5 cat6"; 
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows:  20px 1fr 1fr;
+    gap: 30px;
+    margin: 0 30px 0px 100px;
+
+}
+#categorias-prinpales-container--title {
+    grid-area: head;
+}
+#cat1{
+    grid-area: cat1;
+}
+#cat2{
+    grid-area: cat2;
+}
+#cat3{
+    grid-area: cat3;
+}
+#cat4{
+    grid-area: cat4;
+}
+#cat5{
+    grid-area: cat5;
+}
+#cat6{
+    grid-area: cat6;
+}
+.categoria-principal-container {
+    display: flex;
     width: 100%;
+    height: 100%;
+    background-color: var(--amazon-blue);
+    border: solid 2px black;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    border-radius: 10px;
 }
 .input-radio {
     margin:0 5px;
