@@ -8,6 +8,7 @@
 :root {
  --nav-color: #1a222e;
  --body-color: #0f161e;
+ --boton-color: hsla(0,0%,100%,.3);
 }
 body {
     background: var(--body-color);
@@ -65,6 +66,8 @@ nav div ul li {
     width: 100vw;
     display: flex;
     height: 30vh;
+    justify-content: center;
+    padding: 10px;
 }
 .dots-header-container {
     width: 100%;
@@ -77,65 +80,75 @@ nav div ul li {
 .headerList {
     width: 90%;
     height: 100%;
-    /* position: relative; */
     display: flex;
-    /* flex-wrap: nowrap; */
     overflow-x: scroll;
-    /* overflow: hidden; */
-    /* overflow-y: hidden; */
+    overflow: hidden;
     scroll-snap-type: x mandatory;
+}
+#item-nav-categories {
+    height: 30vh;
+
 }
 .scroll-bottom-container {
     position: relative;
     width: 5%;
-    background: palegoldenrod;
     height: 100%;
+
+}
+.scroll-bottom-container:hover {
+    background: linear-gradient(90deg,transparent 0,hsla(0,0%,7%,.6))
+
 }
 .buttonNext {
     position: absolute;
-    top: 50%;
-    left: 0;
+    top: calc(50% - 25px);
+    right: 0;
     width: 50px;
     height: 50px;
-    background: red;
     border-radius: 50%;
 }
 .buttonPreview {
     position: absolute;
-    top: 50%;
-    right: 0;
+    top: calc(50% - 25px);
+    left: 0;
     width: 50px;
     height: 50px;
-    background: red;
     border-radius: 50%;
 }
 .header-container {
-    display: block;
-    /* background: gray; */
-    width: 100%;
+    display: flex;
+    min-width: 100%;
     margin: 0 10px;
     height: 100%;
     scroll-snap-align: center;
-    display: flex;
 }
 .header-container--left {
-    width: 750px;
+    width: 50%;
     height: 100%;
 }
 .header-container--right {
+    display: flex;
+    justify-content: center;
     width: 50%;
     height: 100%;
-    /* background: palegoldenrod; */
 }
-
+/* #header-container-categories--right {
+    display: flex;
+} */
+#downdrop-gendres {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+}
 .input-radio {
     margin:0 5px;
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: aliceblue;
+    background-color: hsla(0,0%,100%,.3);
     box-shadow: #0f161e;
 }
+
 
 .downdrop-gendres {
     background: rgb(230, 223, 223);
@@ -157,4 +170,13 @@ nav div ul li {
 }
 .hidden {
     display: none;
+}
+
+/* rotaciones y traslaciones */
+.rotate270 {
+    transform: rotate(-90deg);
+}
+
+.rotate90 {
+    transform: rotate(90deg);
 }

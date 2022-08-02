@@ -59,6 +59,7 @@ async function fetchData(url, categoryNameList) {
 fetchData(urlTreading, "Más vistos");
 
 async function getMovieGenres() {
+    // const anotherCategories = document.getElementById('anotherCategories');
     const response = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=27be4d179de34afb05223f9d58a82fcd');
     const data = await response.json();
     // console.log('gneres', data);
@@ -74,9 +75,10 @@ async function getMovieGenres() {
         //  li.appendChild(document.createTextNode("hols"))
          //console.log("li",li);
         //  console.log("li", li)
+        // containerNameGendrer.insertBefore(li, anotherCategories );
         containerNameGendrer.appendChild(li);
 
-         fetchData(url_genres, item.name);
+        //  fetchData(url_genres, item.name);
 
     });
 }
@@ -106,7 +108,7 @@ async function getMovieDetails(id) {
     // data = `${baseURL}movie/${id}/${API_KEY}`
     const response = await fetch(`${baseURL}movie/${id}?${API_KEY}`);
     const data = await response.json();
-    console.log(data, data.backdrop_path)
+    // console.log(data, data.backdrop_path)
     movieImg.src = `https://image.tmdb.org/t/p/w300/${data.backdrop_path}`;
     title.innerHTML = data.title;
     overview.innerHTML = data.overview;
@@ -136,7 +138,7 @@ async function getMovieDetails(id) {
 
 
     // container.style.backgroundImage = `url(https://image.tmdb.org/t/p/w300/${data.backdrop_path})`;
-    console.log(`url(https://image.tmdb.org/t/p/w300/${data.backdrop_path})`)
+    // console.log(`url(https://image.tmdb.org/t/p/w300/${data.backdrop_path})`)
     // container.style.backgroundSize = '40%';
     // container.style.backgroundRepeat = 'no-repeat';
     // movieImg.src = 'https://image.tmdb.org/t/p/w300/'+ movie.backdrop_path;
@@ -155,15 +157,23 @@ async function createHeaderList() {
     
     for (let i=0; i<7; i++) {
         const divRadio = document.createElement('div');
-        divRadio.className = 'input-radio';
+        // divRadio.className = 'input-radio';
+        // divRadio.id = `r${i}`;
+        // console.log(divRadio.id);
         containerDots.appendChild(divRadio);
-        console.log(arrayMovies[i]);
+        // console.log(arrayMovies[i]);
         getMovieDetails(arrayMovies[i].id);
+
     }
 
 
+
 }
-createHeaderList()
+getMovieGenres();
+createHeaderList();
+
+
+
 
 // getMovieDetails(338953);
 // getMovieDetails(338953);

@@ -36,14 +36,39 @@
         </nav>
 
         <div id='item-nav-categories' class="header-container hidden">
-            <ul id="downdrop-gendres">
-                <li>holas</li>
-            </ul>
+            <div class="header-container--left">
+
+            </div>
+            <div id="header-container-categories--right" class="header-container--right">
+                
+                <ul id="downdrop-gendres">
+                    <li id="anotherCategories"><div>
+                        <ul >
+                            <li><h2>Otras categorias</h2></li>
+                            <li>Favoritos</li>
+                            treadind top
+                        </ul>
+                    </div></li>
+                    <li><h2>Generos</h2></li>
+                </ul>
+
+            </div>
         </div>
-        <div class="headerLsit-container">
-            <div class="dots-header-container" id="dots-header-container"></div>
+        <div class="headerLsit-container" id="headerLsit-container">
+            <div class="dots-header-container" id="dots-header-container">
+                <div class="input-radio" style="background: white;" id="r0"></div>
+                <div class="input-radio" id="r1"></div>
+                <div class="input-radio" id="r2"></div>
+                <div class="input-radio" id="r3"></div>
+                <div class="input-radio" id="r4"></div>
+                <div class="input-radio" id="r5"></div>
+                <div class="input-radio" id="r6"></div>
+    
+            </div>
             <div class="scroll-bottom-container">
-                <div class="buttonPreview" id="buttonPreview"></div>
+                <div class="buttonPreview hidden" id="buttonPreview">
+                    <img class="icons rotate90" src="./icons/flecha-hacia-abajo-para-navegar.png" alt="">
+                </div>
             </div>
             <div class="headerList" id="headerList">
                 <!-- <div class="header-container" id="header-container">
@@ -57,7 +82,9 @@
 
             </div>
             <div class="scroll-bottom-container">
-                <div class="buttonNext" id="buttonNext"></div>
+                <div class="buttonNext" id="buttonNext">
+                    <img class="icons rotate270" src="./icons/flecha-hacia-abajo-para-navegar.png" alt="">
+                </div>
             </div>
         </div>
     </header>
@@ -72,7 +99,8 @@
         </div> -->
 
     </main>
-    <script src="./src/navigation.js"></script>
+    
     <script src="./src/index.js"></script>
+    <script src="./src/navigation.js"></script>
 </body>
 </html>
