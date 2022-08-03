@@ -100,6 +100,30 @@ nav div ul li {
     background: linear-gradient(90deg,transparent 0,hsla(0,0%,7%,.6))
 
 }
+.scroll-bottom-container-left:hover {
+    background: linear-gradient(-90deg,transparent 0,hsla(0,0%,7%,.6))
+
+}
+.scroll-bottom-container-right:hover {
+    background: linear-gradient(90deg,transparent 0,hsla(0,0%,7%,.6))
+
+}
+
+.scroll-bottom-container-left {
+    position: absolute;
+    width: 5%;
+    height: 100%;
+    left: 0;
+    
+}
+.scroll-bottom-container-right {
+    position: absolute;
+    width: 5%;
+    height: 100%;
+    right: 0;
+;
+}
+
 .buttonNext {
     position: absolute;
     top: calc(50% - 25px);
@@ -206,15 +230,24 @@ nav div ul li {
     width: 100vw;
     height: 30vh;
 }
+.categoria-container {
+    width: 100%;
+    position: relative;
+}
 .category-container--list {
+    width: 100%;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: scroll;
     overflow-y: hidden;
+    overflow: hidden;
+    scroll-snap-type: x mandatory;
+    
 }
 .movie-container {
     margin: 10px 10px;
     /* margin-left: 10px; */
+    scroll-snap-align: start;
 }
 .movie-img {
     min-width: 270px;

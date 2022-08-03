@@ -29,6 +29,44 @@ function createCategoryMovieList(container, moviesArray, categoryNameList) {
     categoryTitle.innerHTML = categoryNameList;
     categoriaContainer.appendChild(categoryTitle);
 
+    //botones
+    const nextScrollBottonContainer = document.createElement('div');
+    const previewScrollBottonContainer = document.createElement('div');
+    const nextButton = document.createElement('div');
+    const previewButton = document.createElement('div');
+    const imgArrow = document.createElement('img');
+    const imgArrowR = document.createElement('img');
+    imgArrow.src = './icons/flecha-hacia-abajo-para-navegar.png';
+    imgArrowR.src = './icons/flecha-hacia-abajo-para-navegar.png';
+    nextButton.className = 'buttonNext'; 
+    previewButton.className = 'buttonPreview';
+    imgArrow.className = 'icons rotate90';
+    imgArrowR.className = 'icons rotate270';
+    previewButton.appendChild(imgArrow);
+    nextButton.appendChild(imgArrowR);
+    nextScrollBottonContainer.appendChild(nextButton);
+    previewScrollBottonContainer.appendChild(previewButton)
+
+    previewScrollBottonContainer.className = 'scroll-bottom-container-left';
+    nextScrollBottonContainer.className = 'scroll-bottom-container-right';
+    
+    previewScrollBottonContainer.addEventListener('click', () => {
+        const dx = categoryContainerList.clientWidth
+        const start = categoryContainerList.scrollLeft
+        console.log(start);
+        categoryContainerList.scrollTo(start-dx, start);
+    });
+    nextScrollBottonContainer.addEventListener('click', () => {
+        const dx = categoryContainerList.clientWidth
+        const start = categoryContainerList.scrollLeft
+        console.log(start);
+        categoryContainerList.scrollTo(start+dx, start);
+    });
+    
+    
+    categoryContainerList.append(nextScrollBottonContainer, previewScrollBottonContainer);
+    // categoriaContainer.appendChild(categoryContainerList)
+
     moviesArray.forEach(movie => {
       
         // console.log(movie);
@@ -48,16 +86,17 @@ function createCategoryMovieList(container, moviesArray, categoryNameList) {
         
         movieContainer.appendChild(movieImg);
         categoryContainerList.appendChild(movieContainer);
-        categoriaContainer.appendChild(categoryContainerList);
+        
+        //categoriaContainer.appendChild(categoryContainerList);
 
         // container.appendChild(categoryTitle);
         // container.appendChild(categoryContainerList);
 
     // console.log(movie.title);        
     });
-
+    categoriaContainer.appendChild(categoryContainerList);
     container.appendChild(categoriaContainer);
-    container.appendChild(categoryContainerList);
+    //container.appendChild(categoryContainerList);
 }
 
 //fetching
@@ -95,6 +134,7 @@ async function getMovieGenres() {
         // containerNameGendrer.insertBefore(li, anotherCategories );
         containerNameGendrer.appendChild(li);
 
+        // 
         fetchData(url_genres, item.name);
 
     });
