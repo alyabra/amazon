@@ -80,7 +80,13 @@ function createCategoryMovieList(container, moviesArray, categoryNameList) {
         movieImg.setAttribute('src-data', 'https://image.tmdb.org/t/p/w300/'+ movie.poster_path);
 
         lazyLoader.observe(movieImg);
-        
+
+        movieContainer.addEventListener('click', () => {
+            console.log(movieDetail)
+            console.log('movieId', movie.id)
+            location.hash =`movie=${movie.id}` //movie.id
+            createMovieDetailPageWithId(movie);
+        })
         //movieImg.src = 'https://image.tmdb.org/t/p/w300/'+ movie.poster_path;
 
         
@@ -104,15 +110,15 @@ function createCategoryMovieList(container, moviesArray, categoryNameList) {
 
 urlTreading = 'https://api.themoviedb.org/3/trending/movie/week?api_key=27be4d179de34afb05223f9d58a82fcd'
 
-async function fetchData(url, categoryNameList) {
+async function fetchData(container, url, categoryNameList) {
     const res = await fetch(url);
     const data = await res.json();
     // console.log(data);
     const movies = data.results;
-    createCategoryMovieList(mainHome, movies, categoryNameList);
+    createCategoryMovieList(container, movies, categoryNameList);
 }
 
-fetchData(urlTreading, "Más vistos");
+fetchData(mainHome, urlTreading, "Más vistos");
 
 async function getMovieGenres() {
     // const anotherCategories = document.getElementById('anotherCategories');
@@ -135,7 +141,7 @@ async function getMovieGenres() {
         containerNameGendrer.appendChild(li);
 
         // 
-        fetchData(url_genres, item.name);
+        fetchData(mainHome, url_genres, item.name);
 
     });
 }
@@ -223,7 +229,16 @@ async function createHeaderList() {
 
     }
 
+}
 
+async function createMovieDetailPageWithId(movie) {
+    const title = document.querySelector('.movieDetail-title');
+    const overview = document.querySelector('.movieDetail-description');
+    overview.innerHTML = movie.overview;
+    title.innerHTML = movie.title;
+    movieDetail.style.backgroundImage = `url('https://image.tmdb.org/t/p/w300/${movie.backdrop_path}')`
+
+    fetchData(movieDetail, `https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=27be4d179de34afb05223f9d58a82fcd`, `Símilares a ${movie.title}`)
 
 }
 getMovieGenres();

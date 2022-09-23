@@ -8,13 +8,22 @@ window.addEventListener('hashchange', navigaitor)
 function navigaitor(){
     const headerContainerList = document.getElementById('headerLsit-container');
     const itemNavNategories = document.getElementById('item-nav-categories');
- 
-    if (location.hash.startsWith('#categoriesList')) {
+    if(location.hash.startsWith('#movie')){
+        headerContainerList.classList.add('hidden');
+        itemNavNategories.classList.add('hidden');
+        movieDetail.classList.remove('hidden');
+        mainHome.classList.add('hidden');
+
+    } else if (location.hash.startsWith('#categoriesList')) {
         itemNavNategories.classList.remove('hidden');
-        headerContainerList.classList.add('hidden')
+        headerContainerList.classList.add('hidden');
+        movieDetail.classList.add('hidden');
+        mainHome.classList.remove('hidden');
     } else {
         itemNavNategories.classList.add('hidden');
         headerContainerList.classList.remove('hidden');
+        movieDetail.classList.add('hidden');
+        mainHome.classList.remove('hidden');
     }
 }
 
